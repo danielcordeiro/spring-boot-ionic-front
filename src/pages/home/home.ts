@@ -12,4 +12,11 @@ export class HomePage {
 
   }
 
+  login(){
+    /**Push impilha a pagina
+    this.navCtrl.push('CategoriasPage')**/
+
+    this.navCtrl.setRoot('CategoriasPage')
+  }
+
 }
