@@ -26,6 +26,7 @@ export class MyApp {
       //{ title: 'Login', component: 'HomePage' },
       { title: 'Profile', component: 'ProfilePage' },
       { title: 'Categorias', component: 'CategoriasPage' },
+      { title: 'Carinho', component: 'CartPage' },
       { title: 'Logout', component: '' }
     ];
 
@@ -47,11 +48,11 @@ export class MyApp {
         this.nav.setRoot('HomePage');
         break;
 
-        default:
+      default:
         this.nav.setRoot(page.component);
 
     }
 
-    
+
   }
 }
