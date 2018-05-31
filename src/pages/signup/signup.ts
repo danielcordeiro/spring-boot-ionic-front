@@ -34,6 +34,7 @@ export class SignupPage {
     public alertCtrl: AlertController) {
 
     this.formGroup = this.formBuilder.group({
+      /*
       nome: ['Joaquim', [Validators.required, Validators.minLength(5), Validators.maxLength(120)]],
       email: ['joaquim@gmail.com', [Validators.required, Validators.email]],
       tipo: ['1', [Validators.required]],
@@ -45,6 +46,22 @@ export class SignupPage {
       bairro: ['Copacabana', []],
       cep: ['10828333', [Validators.required]],
       telefone1: ['977261827', [Validators.required]],
+      telefone2: ['', []],
+      telefone3: ['', []],
+      estadoId: [null, [Validators.required]],
+      cidadeId: [null, [Validators.required]]
+      */
+      nome: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(120)]],
+      email: ['', [Validators.required, Validators.email]],
+      tipo: ['', [Validators.required]],
+      cpfOuCnpj: ['', [Validators.required, Validators.minLength(11), Validators.maxLength(14)]],
+      senha: ['', [Validators.required]],
+      logradouro: ['', [Validators.required]],
+      numero: ['', [Validators.required]],
+      complemento: ['', []],
+      bairro: ['', []],
+      cep: ['', [Validators.required]],
+      telefone1: ['', [Validators.required]],
       telefone2: ['', []],
       telefone3: ['', []],
       estadoId: [null, [Validators.required]],
