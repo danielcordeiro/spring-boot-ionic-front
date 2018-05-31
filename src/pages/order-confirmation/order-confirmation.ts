@@ -26,6 +26,7 @@ export class OrderConfirmationPage {
   cartItems: CartItem[];
   cliente: ClienteDTO;
   endereco: EnderecoDTO;
+  codpedido: string;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -62,7 +63,7 @@ export class OrderConfirmationPage {
     this.pedidoService.insert(this.pedido).subscribe(
       response => {
         this.cartService.createOrClearCart();
-        console.log(response.headers.get('location'));
+        this.codpedido = this.extractId(response.headers.get('location'));
       }, error => {
         if (error.status == 403) {
           this.navCtrl.setRoot('HomePage');
@@ -72,6 +73,15 @@ export class OrderConfirmationPage {
   }
 
   back() {
+    this.navCtrl.setRoot('CartPage');
+  }
 
+  home(){
+    this.navCtrl.setRoot('CategoriasPage');
+  }
+
+  private extractId(location: string) {
+    let position = location.lastIndexOf('/');
+    return location.substring(position + 1, location.length);
   }
 }
