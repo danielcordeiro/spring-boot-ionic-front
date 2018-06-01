@@ -4,6 +4,8 @@ import { ProdutoDTO } from '../../models/produto.dto';
 import { API_CONFIG } from '../../config/api.config';
 import { ProdutoService } from '../../services/domain/produto.service';
 import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
+import { AdMobFree, AdMobFreeBannerConfig, AdMobFreeInterstitialConfig } from '@ionic-native/admob-free';
+
 
 @IonicPage()
 @Component({
@@ -19,11 +21,13 @@ export class ProdutosPage {
     public navCtrl: NavController, 
     public navParams: NavParams,
     public produtoService: ProdutoService,
-    public loadingCtrl: LoadingController) {
+    public loadingCtrl: LoadingController,
+    public admob: AdMobFree) {
   }
 
   ionViewDidLoad() {
     this.loadData();
+    this.launchInterstitial();
   }
 
   loadData() {
@@ -83,4 +87,21 @@ export class ProdutosPage {
       infiniteScroll.complete();
     }, 1000);
   }
+
+  launchInterstitial() {
+ 
+    let interstitialConfig: AdMobFreeInterstitialConfig = {
+        isTesting: false, // Remove in production
+        autoShow: true,
+        id: 'ca-app-pub-2655139835721928/9434251136'
+        
+    };
+
+    this.admob.interstitial.config(interstitialConfig);
+
+    this.admob.interstitial.prepare().then(() => {
+        // success
+    });
+
+}
 }

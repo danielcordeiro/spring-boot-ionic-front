@@ -3,6 +3,7 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AuthService } from '../services/auth.service';
+import { AdMobFreeBannerConfig, AdMobFree } from '@ionic-native/admob-free';
 
 
 @Component({
@@ -18,7 +19,8 @@ export class MyApp {
   constructor(public platform: Platform,
     public statusBar: StatusBar,
     public splashScreen: SplashScreen,
-    public auth: AuthService) {
+    public auth: AuthService,
+    public admob: AdMobFree) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
@@ -38,6 +40,7 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      this.showBanner();
     });
   }
 
@@ -55,4 +58,20 @@ export class MyApp {
 
 
   }
+
+  showBanner() {
+ 
+    let bannerConfig: AdMobFreeBannerConfig = {
+        isTesting: false, // Remove in production
+        autoShow: true,
+        id: 'ca-app-pub-2655139835721928/9434251136'
+    };
+
+    this.admob.banner.config(bannerConfig);
+
+    this.admob.banner.prepare().then(() => {
+        // success
+    }).catch(e => console.log(e));
+
+}
 }

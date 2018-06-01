@@ -16,6 +16,7 @@ import { AuthInterceptorProvider } from '../interceptors/auth-interceptor';
 import { ProdutoService } from '../services/domain/produto.service';
 import { CartService } from '../services/domain/cart.service';
 import { ImageUtilService } from '../services/domain/image-util.service';
+import { AdMobFree } from '@ionic-native/admob-free';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { ImageUtilService } from '../services/domain/image-util.service';
     ClienteService,
     ProdutoService,
     CartService,
-    ImageUtilService
+    ImageUtilService,
+    AdMobFree
   ]
 })
 export class AppModule {}
